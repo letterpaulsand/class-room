@@ -1,12 +1,13 @@
 <?php
-/*
-*       MADE BY PAUL
-*/
+// write header
 header('Access-Control-Allow-Origin:*');
+// --------------------------------------------------------------------------------------------------------------------
 $sqlhost = 'localhost';
 $user = 'root';
 $password = 'mouse0609';
 $dbname = 'class';
+// --------------------------------------------------------------------------------------------------------------------
+
 // get GET start
 $sendlist = $_GET['sendlist'];
 $sendjob = $_GET['sendjob'];
@@ -19,10 +20,19 @@ $month = $_GET['month'];
 $date = $_GET['date'];
 $day = $_GET['day'];
 // get GET end
+
+// get time
 $table = $year . $month . $date;
 
 // connect sql
-$connent = mysqli_connect($sqlhost, $user, $password, $dbname);
+$connent = new mysqli($sqlhost, $user, $password, $dbname);
+
+// catch error
+if ($connent->connect_error) {
+    die('error');
+}
+
+
 if ($connent) {
     $creattable = "CREATE TABLE `$table` (
         sendlist TEXT(4),
@@ -36,21 +46,37 @@ if ($connent) {
         dates TEXT(2),
         dayss TEXT(1)
         )";
-
-
-if ($connent->query($creattable) === TRUE) {
-    echo "ok";
-   
+    if ($connent->query($creattable) !== TRUE) {
+        $creatdata = "INSERT INTO `2022124`(
+            `sendlist`, 
+            `sendjob`, 
+            `sendbook`, 
+            `jobdate`, 
+            `pages`, 
+            `dess`, 
+            `years`, 
+            `months`, 
+            `dates`, 
+            `dayss`
+            ) VALUES (
+                '$sendlist',
+                '$sendjob',
+                '$sendbook',
+                '$jobdate',
+                '$page',
+                '$des',
+                '$year',
+                '$month',
+                '$date',
+                '$day'
+                )";
+        $result = mysqli_query($connent, $creatdata);
+        if ($result) {
+            echo true;
+        }
+    } else {
+        
+    };
 } else {
-    echo "error creat";
-}
-
-
-
-} else {
-
-    echo "database error :" . mysqli_connect_error();
+    echo false;
 };
-
-
-// echo $sendlist, $sendjob, $sendbook, $jobdate, $page, $des, $year, $month, $date, $day;
