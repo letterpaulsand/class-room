@@ -86,6 +86,27 @@ header{
     user-select: none;
 }
 
+.book{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.book div{
+    height: 30px;
+    width: 50px;
+    background-color: grey;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans TC', sans-serif;
+    margin: 5px;
+    user-select: none;
+}
+
 .editor{
     font-size: 25px;
     font-weight: bold;

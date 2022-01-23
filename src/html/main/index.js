@@ -1,5 +1,6 @@
 let sendList = [];
-let sendJob = null
+let sendJob = null;
+let sendBook = null;
 // subject element start
 const chinese = document.getElementById('chinese');
 const math = document.getElementById('math');
@@ -275,65 +276,96 @@ function allPersonWhite() {
     allTheJob[3].style.backgroundColor = 'white';
     allTheJob[4].style.backgroundColor = 'white';
     allTheJob[5].style.backgroundColor = 'white';
-
-
 }
 // job element listener start
 allTheJob[0].addEventListener('click', () => {
-    if (allTheJob[0].style.backgroundColor == 'red') {
-
-    } else {
         allPersonWhite()
         allTheJob[0].style.backgroundColor = 'red'
         sendJob = '考';
-    }
 })
 allTheJob[1].addEventListener('click', () => {
-    if (allTheJob[1].style.backgroundColor == 'red') {
-
-    } else {
         allPersonWhite()
         allTheJob[1].style.backgroundColor = 'red'
         sendJob = '交';
-    }
 })
 allTheJob[2].addEventListener('click', () => {
-    if (allTheJob[2].style.backgroundColor == 'red') {
-
-    } else {
         allPersonWhite()
         allTheJob[2].style.backgroundColor = 'red'
         sendJob = '帶';
-    }
 })
 allTheJob[3].addEventListener('click', () => {
-    if (allTheJob[3].style.backgroundColor == 'red') {
-
-    } else {
         allPersonWhite()
         allTheJob[3].style.backgroundColor = 'red'
         sendJob = '穿';
-    }
 })
 allTheJob[4].addEventListener('click', () => {
-    if (allTheJob[4].style.backgroundColor == 'red') {
-
-    } else {
         allPersonWhite()
         allTheJob[4].style.backgroundColor = 'red'
         sendJob = '預習';
-    }
 })
 allTheJob[5].addEventListener('click', () => {
-    if (allTheJob[5].style.backgroundColor == 'red') {
-
-    } else {
         allPersonWhite()
         allTheJob[5].style.backgroundColor = 'red'
         sendJob = '複習';
-    }
 })
 // job element listener end
+
+// book element
+const studentBook = document.getElementById('student-book');
+const workBook = document.getElementById('work-book');
+const handout = document.getElementById('handout');
+const handoutOne = document.getElementById('handout-one');
+const handoutTwo = document.getElementById('handout-two');
+const learningPaper = document.getElementById('learning-paper');
+// book element end
+const bookList = [
+    studentBook,
+    workBook,
+    handout,
+    handoutOne,
+    handoutTwo,
+    learningPaper
+]
+function cleanBookList() {
+    bookList[0].style.backgroundColor = 'grey';
+    bookList[1].style.backgroundColor = 'grey';
+    bookList[2].style.backgroundColor = 'grey';
+    bookList[3].style.backgroundColor = 'grey';
+    bookList[4].style.backgroundColor = 'grey';
+    bookList[5].style.backgroundColor = 'grey';
+}
+// book element listener start
+bookList[0].addEventListener('click', () => {
+    cleanBookList()
+    bookList[0].style.backgroundColor = 'red';
+    sendBook = '課本'
+});
+bookList[1].addEventListener('click', () => {
+    cleanBookList()
+    bookList[1].style.backgroundColor = 'red';
+    sendBook = '習作'
+});
+bookList[2].addEventListener('click', () => {
+    cleanBookList()
+    bookList[2].style.backgroundColor = 'red';
+    sendBook = '講義'
+});
+bookList[3].addEventListener('click', () => {
+    cleanBookList()
+    bookList[3].style.backgroundColor = 'red';
+    sendBook = '大講'
+});
+bookList[4].addEventListener('click', () => {
+    cleanBookList()
+    bookList[4].style.backgroundColor = 'red';
+    sendBook = '小講'
+});
+bookList[5].addEventListener('click', () => {
+    cleanBookList()
+    bookList[5].style.backgroundColor = 'red';
+    sendBook = '學單'
+});
+// book element listener end
 
 // get input start 
 const jobDate = document.getElementById('jobDate');
@@ -353,10 +385,11 @@ button.addEventListener('click', () => {
     let theLastSendList = {
         sendList: sendList,
         sendJob: sendJob,
+        sendBook: sendBook,
         jobDate: jobDateValue,
         page: pageValue,
         des: desValue
     }
     console.log(theLastSendList);
-    location.href = `./send.html?sendlist=${sendList}&sendjob=${sendJob}&jobdate=${jobDateValue}&page=${pageValue}&des=${desValue}`
+    location.href = `../send?sendlist=${sendList}&sendjob=${sendJob}&sendbook=${sendBook}&jobdate=${jobDateValue}&page=${pageValue}&des=${desValue}`
 });
