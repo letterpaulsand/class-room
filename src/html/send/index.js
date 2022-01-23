@@ -1,4 +1,7 @@
-const phpHostUrl = 'http://127.0.0.1/paula-class/server/index.php'
+import "./index.css";
+import "../../js/alert.js";
+import "../../img/fish.png";
+const phpHostUrl = 'http://127.0.0.1/paula-class/server/index.php';
 let url = new URL(location.href);
 var xhttp = new XMLHttpRequest();
 let today = new Date();
