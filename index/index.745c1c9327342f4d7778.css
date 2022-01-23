@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Pacifico&display=swap);
+* {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+html{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(182, 86, 86);
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav{
+    width: 500px;
+    height: 800px;
+    background-color: cadetblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 72px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Pacifico', cursive;
+}
+
+nav div{
+    width: 95%;
+    margin: 10px;
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+nav div:hover{
+    background-color: rgb(70, 70, 70);
+}

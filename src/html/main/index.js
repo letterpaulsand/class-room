@@ -1,3 +1,5 @@
+import "../../js/alert.js";
+import "./index.css"
 let sendList = [];
 let sendJob = null;
 let sendBook = null;
