@@ -34,6 +34,8 @@ if ($connent->connect_error) {
 
 
 if ($connent) {
+
+    // creattable sql start
     $creattable = "CREATE TABLE `$table` (
         sendlist TEXT(4),
         sendjob TEXT(4),
@@ -46,8 +48,10 @@ if ($connent) {
         dates TEXT(2),
         dayss TEXT(1)
         )";
-    if ($connent->query($creattable) !== TRUE) {
-        $creatdata = "INSERT INTO `2022124`(
+    // creattable sql end
+
+    // insert sql start
+    $creatdata = "INSERT INTO `2022124`(
             `sendlist`, 
             `sendjob`, 
             `sendbook`, 
@@ -70,13 +74,14 @@ if ($connent) {
                 '$date',
                 '$day'
                 )";
-        $result = mysqli_query($connent, $creatdata);
-        if ($result) {
-            echo true;
-        }
-    } else {
-        
-    };
+    // insert sql end
+
+    // insert into 
+    $result = mysqli_query($connent, $creatdata);
+    if ($result) {
+        echo true;
+    }
+    
 } else {
     echo false;
 };
