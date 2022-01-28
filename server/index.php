@@ -22,7 +22,7 @@ $day = $_GET['day'];
 // get GET end
 
 // get time
-$table = $year . $month . $date;
+$table = "$year-$month-$date";
 
 // connect sql
 $connent = new mysqli($sqlhost, $user, $password, $dbname);
@@ -50,38 +50,41 @@ if ($connent) {
         )";
     // creattable sql end
 
-    // insert sql start
-    $creatdata = "INSERT INTO `2022124`(
-            `sendlist`, 
-            `sendjob`, 
-            `sendbook`, 
-            `jobdate`, 
-            `pages`, 
-            `dess`, 
-            `years`, 
-            `months`, 
-            `dates`, 
-            `dayss`
-            ) VALUES (
-                '$sendlist',
-                '$sendjob',
-                '$sendbook',
-                '$jobdate',
-                '$page',
-                '$des',
-                '$year',
-                '$month',
-                '$date',
-                '$day'
-                )";
-    // insert sql end
-
-    // insert into 
-    $result = mysqli_query($connent, $creatdata);
-    if ($result) {
-        echo true;
+    if ($connent->query($creattable) === TRUE) {
+    } else {
     }
-    
+
+    // insert sql start
+    $creatdata = "INSERT INTO `$table`(
+        `sendlist`, 
+        `sendjob`, 
+        `sendbook`, 
+        `jobdate`, 
+        `pages`, 
+        `dess`, 
+        `years`, 
+        `months`, 
+        `dates`, 
+        `dayss`
+        ) VALUES (
+            '$sendlist',
+            '$sendjob',
+            '$sendbook',
+            '$jobdate',
+            '$page',
+            '$des',
+            '$year',
+            '$month',
+            '$date',
+            '$day'
+            )";
+        // insert sql end
+
+        // insert into 
+        $result = mysqli_query($connent, $creatdata);
+        echo '1';
+
+
 } else {
     echo false;
 };

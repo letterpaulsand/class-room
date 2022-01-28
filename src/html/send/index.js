@@ -13,7 +13,13 @@ let page = url.searchParams.get('page');
 let des = url.searchParams.get('des');
 let year = today.getFullYear();
 let month = today.getMonth() + 1;
+if(month < 10){
+    month = '0' + month;
+}
 let date = today.getDate();
+if(date < 10){
+    date = '0' + date;
+}
 let day = today.getDay();
 xhttp.onreadystatechange = function(){
     if (this.readyState == 4 && this.status == 200) {
@@ -22,6 +28,5 @@ xhttp.onreadystatechange = function(){
     }
 };
 let sendurl = `${phpHostUrl}?sendlist=${sendList}&sendjob=${sendJob}&sendbook=${sendBook}&jobdate=${jobDate}&page=${page}&des=${des}&year=${year}&month=${month}&date=${date}&day=${day}`;
-console.log(sendurl);
 xhttp.open('GET', sendurl);
 xhttp.send();
