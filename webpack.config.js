@@ -5,7 +5,7 @@
 // module.exports = {
 //     entry: './src/html/index/index.js',
 //     output: {
-//         path: path.resolve(__dirname, 'index'),
+//         path: path.resolve(__dirname, 'dist/index'),
 //         filename: 'index.[hash].js',
 //     },
 //     module: {
@@ -39,7 +39,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: './src/html/main/index.js',
     output: {
-        path: path.resolve(__dirname, 'main'),
+        path: path.resolve(__dirname, 'dist/main'),
         filename: 'index.[hash].js',
     },
     module: {
@@ -76,7 +76,7 @@ module.exports = {
 // module.exports = {
 //     entry: './src/html/send/index.js',
 //     output: {
-//         path: path.resolve(__dirname, 'send'),
+//         path: path.resolve(__dirname, 'dist/send'),
 //         filename: 'index.[hash].js',
 //     },
 //     module: {
@@ -115,7 +115,7 @@ module.exports = {
 // module.exports = {
 //     entry: './src/html/look/index.js',
 //     output: {
-//         path: path.resolve(__dirname, 'look'),
+//         path: path.resolve(__dirname, 'dist/look'),
 //         filename: 'index.[hash].js',
 //     },
 //     module: {
