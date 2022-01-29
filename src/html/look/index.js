@@ -1,4 +1,6 @@
 import "./index.css"
+import "../../js/alert.js"
+import fullwidth from 'fullwidth';
 // ------------------------------------------------------------------------------
 const host = "http://127.0.0.1/paula-class/server/log.php"
 // ------------------------------------------------------------------------------
@@ -89,19 +91,19 @@ loadItem.then(() => {
                         if (json[i].sendjob == "登記") {
                             gradeRecordStatus++
                             var homeworkList = document.createElement('div');
-                            var text = document.createTextNode(`${json[i].sendlist}${json[i].pages}${json[i].dess}`)
+                            var text = document.createTextNode(`${fullwidth(json[i].sendlist)}${json[i].pages}${json[i].dess}`)
                             homeworkList.appendChild(text);
                             gradeRecord.appendChild(homeworkList);
 
                         } else {
                             if (finallyDate == null) {
                                 var homeworkList = document.createElement('div');
-                                var text = document.createTextNode(`${(i + 1 - gradeRecordStatus)}. ${json[i].jobdate}${json[i].sendjob}${json[i].sendlist}${json[i].pages}${json[i].dess}`)
+                                var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
                                 homeworkList.appendChild(text);
                                 homework.appendChild(homeworkList);
                             } else {
                                 var homeworkList = document.createElement('div');
-                                var text = document.createTextNode(`${(i + 1 - gradeRecordStatus)}. ${finallyDate}${json[i].sendjob}${json[i].sendlist}${json[i].pages}${json[i].dess}`)
+                                var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${finallyDate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
                                 homeworkList.appendChild(text);
                                 homework.appendChild(homeworkList);
                             }

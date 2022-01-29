@@ -88,3 +88,4 @@ if ($connent) {
 } else {
     echo false;
 };
+$connent->close();
