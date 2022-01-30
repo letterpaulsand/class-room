@@ -9,6 +9,8 @@ const right = document.getElementById('right');
 const select = document.getElementById('select');
 const left = document.getElementById('left');
 const dateData = document.getElementById('date-data');
+const del = document.getElementById('del');
+
 right.addEventListener('click', () => {
     select.style.display = 'none';
     left.style.display = 'block';
@@ -17,6 +19,11 @@ left.addEventListener('click', () => {
     left.style.display = 'none';
     select.style.display = 'flex';
 });
+let storage = localStorage
+
+if(storage.auth){
+    del.style.display = 'block'
+}
 
 
 
@@ -134,8 +141,5 @@ loadItem.then(() => {
         getItemListener('id' + i);
     }
     getItem('id0')
-
-
-
 
 })

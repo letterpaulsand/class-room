@@ -3,6 +3,14 @@ import "./index.css"
 let sendList = [];
 let sendJob = null;
 let sendBook = null;
+let storage = localStorage
+
+if(storage.auth){
+    checkOk()
+}else{
+    alert('You have to login!')
+    location.href = '../index'
+}
 
 
 function checkOk() {

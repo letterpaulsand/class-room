@@ -1,28 +1,28 @@
-const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const path = require('path');
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-    entry: './src/html/index/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist/index'),
-        filename: 'index.[hash].js',
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
-            },
-        ],
-    },
-    plugins: [new MiniCssExtractPlugin({
-        filename: 'index.[hash].css'
-    }),
-    new HtmlWebpackPlugin({
-        template: './src/html/index.html'
-    })],
-};
+// module.exports = {
+//     entry: './src/html/index/index.js',
+//     output: {
+//         path: path.resolve(__dirname, 'dist/index'),
+//         filename: 'index.[hash].js',
+//     },
+//     module: {
+//         rules: [
+//             {
+//                 test: /\.css$/i,
+//                 use: [MiniCssExtractPlugin.loader, "css-loader"],
+//             },
+//         ],
+//     },
+//     plugins: [new MiniCssExtractPlugin({
+//         filename: 'index.[hash].css'
+//     }),
+//     new HtmlWebpackPlugin({
+//         template: './src/html/index.html'
+//     })],
+// };
 
 
 
@@ -108,31 +108,31 @@ module.exports = {
 
 
 
-// const path = require('path');
-// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-// module.exports = {
-//     entry: './src/html/look/index.js',
-//     output: {
-//         path: path.resolve(__dirname, 'dist/look'),
-//         filename: 'index.[hash].js',
-//     },
-//     module: {
-//         rules: [
-//             {
-//                 test: /\.css$/i,
-//                 use: [MiniCssExtractPlugin.loader, "css-loader"],
-//             },
-//         ],
-//     },
-//     plugins: [new MiniCssExtractPlugin({
-//         filename: 'index.[hash].css'
-//     }),
-//     new HtmlWebpackPlugin({
-//         template: './src/html/look/index.html'
-//     })],
-// };
+module.exports = {
+    entry: './src/html/look/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist/look'),
+        filename: 'index.[hash].js',
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
+            },
+        ],
+    },
+    plugins: [new MiniCssExtractPlugin({
+        filename: 'index.[hash].css'
+    }),
+    new HtmlWebpackPlugin({
+        template: './src/html/look/index.html'
+    })],
+};
 
 
 
