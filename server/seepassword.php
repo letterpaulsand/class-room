@@ -30,17 +30,39 @@ if ($connent) {
     } else {
         echo "error";
     }
-    $connent->close();
     $getauth = $data[0]['auth'];
     $getpassword = $data[0]['password'];
     $ok = $data[0]['ok'];
-    if($getpassword == $passwordget && $getauth == $auth){
-        echo '';
-    }elseif($getpassword == $passwordget){
-        echo $getauth;
-    }elseif($getauth == $auth){
-        echo '';
-    }else{
-        echo 'password error';
+    if ($ok == 1) {
+        echo "password error";
+    } else {
+        
+        if ($getpassword == $passwordget && $getauth == $auth) {
+            $sql1 = "UPDATE `config` SET `ok`= '1' WHERE 1";
+            $result1 = mysqli_query($connent, $sql1);
+            if ($result1) {
+                echo "";
+            } else {
+                echo "error";
+            }
+        } elseif ($getpassword == $passwordget) {
+            echo $getauth;
+            $sql1 = "UPDATE `config` SET `ok`= '1' WHERE 1";
+            $result1 = mysqli_query($connent, $sql1);
+            if ($result1) {
+            } else {
+            }
+        } elseif ($getauth == $auth) {
+            $sql1 = "UPDATE `config` SET `ok`= '1' WHERE 1";
+            $result1 = mysqli_query($connent, $sql1);
+            if ($result1) {
+                echo "";
+            } else {
+                echo "error";
+            }
+        } else {
+            echo 'password error';
+        }
     }
 }
+$connent->close();

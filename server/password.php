@@ -18,12 +18,28 @@ if ($connent->connect_error) {
 }
 
 
-if($connent){
-    $sql = "UPDATE `config` SET `password`= '$passwordget',`auth`= '$auth' WHERE 1";
-    $result = mysqli_query($connent, $sql);
-    if($result){
-        echo "ok";
-    }else{
-        echo "$password and $auth";
+if ($connent) {
+    if ($auth == 'signout') {
+        $sql = "UPDATE `config` SET `ok`= '0' WHERE 1";
+        $result = mysqli_query($connent, $sql);
+        if ($result) {
+            echo "ok";
+        } else {
+            echo "error";
+        }
+    } else {
+        $sql = "UPDATE `config` SET `password`= '$passwordget',`auth`= '$auth' WHERE 1";
+        $result = mysqli_query($connent, $sql);
+        if ($result) {
+            $sql1 = "UPDATE `config` SET `ok`= '1' WHERE 1";
+            $result1 = mysqli_query($connent, $sql);
+            if ($result1) {
+                echo "ok";
+            } else {
+                echo "error";
+            }
+        } else {
+            echo "$password and $auth";
+        }
     }
 }

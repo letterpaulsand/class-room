@@ -6,20 +6,23 @@ var xhttp = new XMLHttpRequest();
 const login = document.getElementById('login');
 const change = document.getElementById('change');
 const submit = document.getElementById('submit');
+const signOut = document.getElementById('sign-out');
 let storage = localStorage;
 let statusCode = null
 function checking(loginValue) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let json = xhttp.responseText;
-            console.log(json);
             if (json != 'error') {
                 if (json == '') {
-                    
-                } else {
+                    statusCode = true
+                } else if(json == 'password error') {
+                    statusCode = false
+                }else{
                     storage.auth = json;
+                    statusCode = true
                 }
-                statusCode = true
+                
             } else {
                 statusCode = false
             }
@@ -38,7 +41,7 @@ function changePassword(changeValue) {
             console.log(json);
             if (json == 'ok') {
                 storage.auth = auth;
-                // location.href = '../index';
+                location.href = '../index';
             } else {
                 alert('Something wrong!');
             }
@@ -47,6 +50,23 @@ function changePassword(changeValue) {
     xhttp.open("GET", `${hostpassword}?password=${changeValue}&auth=${auth}`);
     xhttp.send();
 }
+
+function signout(){
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let json = xhttp.responseText;
+            if (json == 'ok') {
+                alert('sign out!');
+                location.href = '../index';
+            } else {
+                alert('Something wrong!');
+            }
+        }
+    };
+    xhttp.open("GET", `${hostpassword}?password=null&auth=signout`);
+    xhttp.send();
+}
+
 
 function getRandom(x) {
     return Math.floor(Math.random() * x);
@@ -59,15 +79,12 @@ submit.addEventListener('click', () => {
         alert('wrong! You cannot enter two input box together!');
     } else {
         if (changeValue) {
-            checking(null);
-            setTimeout(()=>{
-                if (statusCode == true) {
+                if (storage.auth) {
                     changePassword(changeValue);
                 } else {
                     alert('Something Wrong! (You have to login first)')
-                    console.log(statusCode);
                 }
-            }, 3000)
+            
             
 
         } else if (loginValue) {
@@ -77,7 +94,6 @@ submit.addEventListener('click', () => {
                     location.href = '../index'
                 } else {
                     alert('Something Wrong! (Time out) or (password wrong)')
-                    console.log(statusCode);
                 }
             }, 3000)
             
@@ -86,5 +102,14 @@ submit.addEventListener('click', () => {
         } else {
             alert('You cannot type without words!')
         }
+    }
+})
+
+signOut.addEventListener('click', ()=>{
+    if(storage.auth){
+        signout();
+        storage.removeItem('auth');
+    }else{
+        alert('You haven\'t login!');
     }
 })
