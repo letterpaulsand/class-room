@@ -1,3 +1,5 @@
+import "./index.css"
+import "../../js/alert.js"
 // -------------------------------------------------------------------------
 const hostpassword = "http://127.0.0.1/paula-class/server/password.php";
 const hostseepassword = "http://127.0.0.1/paula-class/server/seepassword.php";
