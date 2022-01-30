@@ -7,7 +7,7 @@ const login = document.getElementById('login');
 const change = document.getElementById('change');
 const submit = document.getElementById('submit');
 let storage = localStorage;
-
+let statusCode = null
 function checking(loginValue) {
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -15,15 +15,13 @@ function checking(loginValue) {
             console.log(json);
             if (json != 'error') {
                 if (json == '') {
-                    alert('ok')
-                    return true
+                    
                 } else {
                     storage.auth = json;
-                    return true
                 }
-
+                statusCode = true
             } else {
-                return false
+                statusCode = false
             }
         }
     };
@@ -33,12 +31,12 @@ function checking(loginValue) {
 
 
 function changePassword(changeValue) {
+    let auth = getRandom(10000000);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let json = xhttp.responseText;
             console.log(json);
             if (json == 'ok') {
-                let auth = getRandom(10000000);
                 storage.auth = auth;
                 // location.href = '../index';
             } else {
@@ -61,21 +59,28 @@ submit.addEventListener('click', () => {
         alert('wrong! You cannot enter two input box together!');
     } else {
         if (changeValue) {
-
-            if (checking(null) === true) {
-                changePassword(changeValue);
-            } else {
-                alert('Something Wrong!')
-            }
+            checking(null);
+            setTimeout(()=>{
+                if (statusCode == true) {
+                    changePassword(changeValue);
+                } else {
+                    alert('Something Wrong! (You have to login first)')
+                    console.log(statusCode);
+                }
+            }, 3000)
+            
 
         } else if (loginValue) {
             checking(loginValue);
-            if (Passstatus == true) {
-                location.href = '../index'
-            } else {
-                alert('Something Wrong!')
-                console.log(Passstatus);
-            }
+            setTimeout(()=>{
+                if (statusCode == true) {
+                    location.href = '../index'
+                } else {
+                    alert('Something Wrong! (Time out) or (password wrong)')
+                    console.log(statusCode);
+                }
+            }, 3000)
+            
 
 
         } else {
