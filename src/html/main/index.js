@@ -1,8 +1,8 @@
 import "../../js/alert.js";
 import "./index.css"
 let sendList = [];
-let sendJob = null;
-let sendBook = null;
+let sendJob = '';
+let sendBook = '';
 let storage = localStorage
 
 if(storage.auth){
@@ -48,6 +48,7 @@ function checkOk() {
     subjectListener('cn-orchestra', '國樂');
     subjectListener('listen', '聽寫');
     subjectListener('theory', '樂理');
+    subjectListener('diary', '札記')
 
     function allPersonWhite() {
         document.getElementById('test').style.backgroundColor = 'white';
@@ -90,7 +91,6 @@ function checkOk() {
         document.getElementById('handout-one').style.backgroundColor = 'grey';
         document.getElementById('handout-two').style.backgroundColor = 'grey';
         document.getElementById('learning-paper').style.backgroundColor = 'grey';
-        document.getElementById('diary').style.backgroundColor = 'grey';
     }
 
     bookListListener('student-book', '課本');
@@ -99,7 +99,6 @@ function checkOk() {
     bookListListener('handout-one', '大講');
     bookListListener('handout-two', '小講');
     bookListListener('learning-paper', '學單');
-    bookListListener('diary', '札記');
 
 
     // get input start 

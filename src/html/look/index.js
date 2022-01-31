@@ -2,7 +2,8 @@ import "./index.css"
 import "../../js/alert.js"
 import fullwidth from 'fullwidth';
 // ------------------------------------------------------------------------------
-const host = "http://127.0.0.1/paula-class/server/log.php"
+const host = "http://127.0.0.1/paula-class/server/log.php";
+const delhost = "http://127.0.0.1/paula-class/server/del.php";
 // ------------------------------------------------------------------------------
 const xhttp = new XMLHttpRequest();
 const right = document.getElementById('right');
@@ -10,6 +11,11 @@ const select = document.getElementById('select');
 const left = document.getElementById('left');
 const dateData = document.getElementById('date-data');
 const del = document.getElementById('del');
+
+
+
+
+
 
 right.addEventListener('click', () => {
     select.style.display = 'none';
@@ -30,10 +36,10 @@ if(storage.auth){
 let loadItem = new Promise(function (resolve, reject) {
 
     for (let i = 0; i < 15; i++) {
-        var allDateUser = moment().subtract(i, 'days').format('YYYY[/]MM[/]D');
+        var allDateUser = moment().subtract(i, 'days').format('YYYY[/]MM[/]DD');
         let div = document.createElement('div');
         div.id = 'id' + i;
-        div.dataset.send = moment().subtract(i, 'days').format('YYYY[-]MM[-]D')
+        div.dataset.send = moment().subtract(i, 'days').format('YYYY[-]MM[-]DD')
         let text = document.createTextNode(allDateUser);
         div.appendChild(text);
         dateData.appendChild(div);
@@ -79,30 +85,32 @@ loadItem.then(() => {
                         json[0].dayss = '(日)'
                     }
                     innerDay.innerText = json[0].dayss;
-                    let dateFormat = `${json[0].years}-${json[0].months}-${json[0].dates}`
+                    let dateFormat = `${json[0].years}-${json[0].months}-${json[0].dates}`;
+                    del.addEventListener('keyup', (key)=>{
+                        if(key.keyCode == 13){
+                            let Value = del.value;
+                            xhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+                                  let json = this.responseText;
+                                  if(json == 'ok'){
+                                      alert('del ok!')
+                                  }else{
+                                      alert('del something wrong!')
+                                  }
+                                }
+                              };
+                              xhttp.open("GET", `${delhost}?id=${Value}&date=${dateFormat}`);
+                              xhttp.send();
+                        }
+                    
+                    })
                     let a = moment(dateFormat);
                     let finallyDate = null;
                     let gradeRecordStatus = 0;
 
                     for (let i = 0; i < json.length; i++) {
                         var spendDay = a.to(json[i].jobdate);
-                        if (spendDay == 'a few seconds ago') {
-                            finallyDate = '今天'
-                        } else if (spendDay == 'in a day') {
-                            finallyDate = '明天'
-                        } else if (spendDay == 'in 2 days') {
-                            finallyDate = '後天'
-                        } else if (spendDay == 'in 7 days') {
-                            finallyDate = '下禮拜'
-                        }
-                        if (json[i].sendjob == "登記") {
-                            gradeRecordStatus++
-                            var homeworkList = document.createElement('div');
-                            var text = document.createTextNode(`${fullwidth(json[i].sendlist)}${json[i].pages}${json[i].dess}`)
-                            homeworkList.appendChild(text);
-                            gradeRecord.appendChild(homeworkList);
-
-                        } else {
+                        function innerCheckno(){
                             if (finallyDate == null) {
                                 var homeworkList = document.createElement('div');
                                 var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
@@ -114,6 +122,45 @@ loadItem.then(() => {
                                 homeworkList.appendChild(text);
                                 homework.appendChild(homeworkList);
                             }
+                        }
+                        function innerCheckok(){
+                            if (finallyDate == null) {
+                                var homeworkList = document.createElement('div');
+                                var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
+                                homeworkList.appendChild(text);
+                                homework.appendChild(homeworkList);
+                            } else {
+                                var homeworkList = document.createElement('div');
+                                var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${finallyDate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
+                                homeworkList.appendChild(text);
+                                homework.appendChild(homeworkList);
+                            }
+                        }
+                        if (spendDay == 'a few seconds ago') {
+                            finallyDate = '今天'
+                        } else if (spendDay == 'in a day') {
+                            finallyDate = '明天'
+                        } else if (spendDay == 'in 2 days') {
+                            finallyDate = '後天'
+                        } else if (spendDay == 'in 7 days') {
+                            finallyDate = '下禮拜'
+                        }
+                        if (json[i].sendjob == '登記') {
+                            gradeRecordStatus++
+                            var homeworkList = document.createElement('div');
+                            if(storage.auth){
+                                var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${fullwidth(json[i].sendlist)}${json[i].pages}${json[i].dess}`)
+                            }else{
+                                var text = document.createTextNode(`${fullwidth(json[i].sendlist)}${json[i].pages}${json[i].dess}`)
+                            }
+                            
+                            homeworkList.appendChild(text);
+                            gradeRecord.appendChild(homeworkList);
+
+                        } else if(storage.auth){
+                            innerCheckok()
+                        }else{
+                            innerCheckno()
                         }
                     }
                 }

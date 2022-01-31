@@ -37,6 +37,7 @@ if ($connent) {
 
     // creattable sql start
     $creattable = "CREATE TABLE `$table` (
+        id INT AUTO_INCREMENT,
         sendlist TEXT(4),
         sendjob TEXT(4),
         sendbook TEXT(10),
@@ -46,14 +47,14 @@ if ($connent) {
         years TEXT(10),
         months TEXT(2),
         dates TEXT(2),
-        dayss TEXT(1)
+        dayss TEXT(1),
+        PRIMARY KEY (id)
         )";
     // creattable sql end
 
     if ($connent->query($creattable) === TRUE) {
     } else {
     }
-
     // insert sql start
     $creatdata = "INSERT INTO `$table`(
         `sendlist`, 
@@ -78,13 +79,11 @@ if ($connent) {
             '$date',
             '$day'
             )";
-        // insert sql end
+    // insert sql end
 
-        // insert into 
-        $result = mysqli_query($connent, $creatdata);
-        echo '1';
-
-
+    // insert into 
+    $result = mysqli_query($connent, $creatdata);
+    echo '1';
 } else {
     echo false;
 };
