@@ -1,12 +1,12 @@
-import "../../js/alert.js";
-import "./index.css"
-let sendList = [];
-let sendJob = '';
-let sendBook = '';
-let storage = localStorage
+import "../../js/alert.js";//use alert js
+import "./index.css"//use css
+let sendList = [];// status
+let sendJob = '';// status
+let sendBook = '';//status
+let storage = localStorage;
 
-if(storage.auth){
-    checkOk()
+if(storage.auth){// check login if not login it will take you back
+    checkOk();
 }else{
     alert('You have to login!')
     location.href = '../index'
@@ -14,7 +14,7 @@ if(storage.auth){
 
 
 function checkOk() {
-
+// subject
     function subjectListener(id, name) {
         document.getElementById(id).addEventListener('click', () => {
             if (document.getElementById(id).style.backgroundColor == 'red') {
@@ -48,8 +48,20 @@ function checkOk() {
     subjectListener('cn-orchestra', '國樂');
     subjectListener('listen', '聽寫');
     subjectListener('theory', '樂理');
-    subjectListener('diary', '札記')
+    subjectListener('diary', '札記');
 
+
+
+
+
+
+
+
+
+
+
+
+//job listen
     function allPersonWhite() {
         document.getElementById('test').style.backgroundColor = 'white';
         document.getElementById('hand').style.backgroundColor = 'white';
@@ -76,13 +88,15 @@ function checkOk() {
     jobListener('review', '複習');
     jobListener('register', '登記');
 
-    function bookListListener(id, name) {
-        document.getElementById(id).addEventListener('click', () => {
-            cleanBookList()
-            document.getElementById(id).style.backgroundColor = 'red';
-            sendBook = name
-        });
-    }
+
+
+
+
+
+
+
+
+//book listen
 
     function cleanBookList() {
         document.getElementById('student-book').style.backgroundColor = 'grey';
@@ -93,6 +107,16 @@ function checkOk() {
         document.getElementById('learning-paper').style.backgroundColor = 'grey';
     }
 
+    function bookListListener(id, name) {
+        document.getElementById(id).addEventListener('click', () => {
+            cleanBookList()
+            document.getElementById(id).style.backgroundColor = 'red';
+            sendBook = name
+        });
+    }
+
+    
+
     bookListListener('student-book', '課本');
     bookListListener('work-book', '習作');
     bookListListener('handout', '講義');
@@ -101,11 +125,16 @@ function checkOk() {
     bookListListener('learning-paper', '學單');
 
 
-    // get input start 
+
+
+
+
+
+
+    // get input
     const jobDate = document.getElementById('jobDate');
     const page = document.getElementById('page');
     const des = document.getElementById('des');
-    // get input end
 
     // listen submit button 
     const button = document.getElementById('button');
@@ -115,4 +144,6 @@ function checkOk() {
         let desValue = des.value;
         location.href = `../send?sendlist=${sendList}&sendjob=${sendJob}&sendbook=${sendBook}&jobdate=${jobDateValue}&page=${pageValue}&des=${desValue}`
     });
-}
+
+
+}// checkok function end
