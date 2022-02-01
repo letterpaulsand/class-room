@@ -5,8 +5,8 @@ import fullwidth from 'fullwidth';
 import moment from "moment";
 let storage = localStorage
 // ------------------------------------------------------------------------------
-const host = "http://127.0.0.1/paula-class/server/log.php";
-const delhost = "http://127.0.0.1/paula-class/server/del.php";
+const host = "http://192.168.43.161/paula-class/server/log.php";
+const delhost = "http://192.168.43.161/paula-class/server/del.php";
 // ------------------------------------------------------------------------------
 const xhttp = new XMLHttpRequest();
 

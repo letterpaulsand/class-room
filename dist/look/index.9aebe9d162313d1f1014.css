@@ -60,8 +60,8 @@ body {
     border-radius: 10px;
 }
 
-.date-data::-webkit-scrollbar {
-    width: 6px;
+ .date-data::-webkit-scrollbar {
+    width: 3px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.082);
 }
@@ -151,7 +151,6 @@ body {
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    width: 35px;
     margin-left: 10px;
     margin-right: 10px;
     writing-mode: vertical-lr; 
@@ -190,3 +189,37 @@ body {
     background-color: rgb(63, 63, 63);
 }
 
+
+@media screen and (max-width: 1257px){
+    .grade-record div{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        writing-mode: vertical-lr; 
+    }
+    .select{
+        display: none;
+        position: absolute;
+        right: 0;
+    }
+    .left{
+        display: block;
+    }
+
+    .homework div{
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    .select p {
+        display: none;
+    }
+    
+    .select input{
+        display: none;
+    }
+
+    *{
+        font-size: 20px;
+    }
+
+}

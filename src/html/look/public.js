@@ -1,7 +1,7 @@
 export function addDate(innerMonth, innerDate, innerYear, innerDay, json){
     innerMonth.innerText = json[0].months;
     innerDate.innerText = json[0].dates;
-    innerYear.innerText = json[0].years;
+    innerYear.innerText = Number(json[0].years) - 1911;
     if (json[0].dayss == 1) {
         json[0].dayss = '(一)'
     } else if (json[0].dayss == 2) {

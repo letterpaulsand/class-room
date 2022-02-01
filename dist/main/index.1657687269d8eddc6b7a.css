@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
-
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap);
 * {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -15,7 +14,7 @@ html {
 body {
     height: 100%;
     width: 100%;
-    background-image: url('../../img/music.jpg');
+    background-image: url(cae4c308dde2982c0b65.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -184,8 +183,9 @@ footer{
     font-size: 20px;
 }
 
-@media screen and (max-width: 634px) {
+@media screen and (min-width: 634px) {
     .root{
-        width: 80%;
+        width: 400px;
     }
 }
+

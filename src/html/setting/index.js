@@ -1,8 +1,8 @@
 import "./index.css"
 import "../../js/alert.js"
 // -------------------------------------------------------------------------
-const hostpassword = "http://127.0.0.1/paula-class/server/password.php";
-const hostseepassword = "http://127.0.0.1/paula-class/server/seepassword.php";
+const hostpassword = "http://192.168.43.161/paula-class/server/password.php";
+const hostseepassword = "http://192.168.43.161/paula-class/server/seepassword.php";
 // -------------------------------------------------------------------------
 var xhttp = new XMLHttpRequest();
 const login = document.getElementById('login');
