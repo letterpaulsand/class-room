@@ -9,7 +9,7 @@ if(storage.auth){// check login if not login it will take you back
     checkOk();
 }else{
     alert('You have to login!')
-    location.href = '../index'
+    location.href = '../index.html'
 }
 
 
@@ -36,7 +36,7 @@ function checkOk() {
     subjectListener('geography', '地理');
     subjectListener('citizen', '公民');
     subjectListener('history', '歷史');
-    subjectListener('dance', '表藝');
+    subjectListener('draw', '視藝');
     subjectListener('scouts', '童軍');
     subjectListener('house', '家政');
     subjectListener('psychology', '輔導');

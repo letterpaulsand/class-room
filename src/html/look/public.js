@@ -1,3 +1,4 @@
+import {tify} from 'chinese-conv';
 export function addDate(innerMonth, innerDate, innerYear, innerDay, json){
     innerMonth.innerText = json[0].months;
     innerDate.innerText = json[0].dates;
@@ -14,7 +15,7 @@ export function addDate(innerMonth, innerDate, innerYear, innerDay, json){
         json[0].dayss = '(五)'
     } else if (json[0].dayss == 6) {
         json[0].dayss = '(六)'
-    } else if (json[0].dayss == 7) {
+    } else if (json[0].dayss == 0) {
         json[0].dayss = '(日)'
     }
     innerDay.innerText = json[0].dayss;
@@ -41,12 +42,17 @@ export function delItem(del, delhost, dateFormat, xhttp){
 export function innerCheckno(finallyDate, json, gradeRecordStatus, fullwidth, i){
     if (finallyDate == null) {
         var homeworkList = document.createElement('div');
-        var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
+        var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${tify(json[i].pages)}${tify(json[i].dess)}`)
         homeworkList.appendChild(text);
         homework.appendChild(homeworkList);
-    } else {
+    }else if (json[i].sendlist == '札記'){
         var homeworkList = document.createElement('div');
-        var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${finallyDate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
+        var text = document.createTextNode(`札記：${tify(json[i].pages)}${tify(json[i].dess)}`)
+        homeworkList.appendChild(text);
+        document.getElementById('write').appendChild(homeworkList);
+    }else {
+        var homeworkList = document.createElement('div');
+        var text = document.createTextNode(`${fullwidth((i + 1 - gradeRecordStatus).toString())} ${finallyDate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${tify(json[i].pages)}${tify(json[i].dess)}`)
         homeworkList.appendChild(text);
         homework.appendChild(homeworkList);
     }
@@ -54,12 +60,17 @@ export function innerCheckno(finallyDate, json, gradeRecordStatus, fullwidth, i)
 export function innerCheckok(finallyDate, json, fullwidth, i){
     if (finallyDate == null) {
         var homeworkList = document.createElement('div');
-        var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
+        var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${json[i].jobdate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${tify(json[i].pages)}${tify(json[i].dess)}`)
         homeworkList.appendChild(text);
         homework.appendChild(homeworkList);
-    } else {
+    } else if (json[i].sendlist == '札記'){
         var homeworkList = document.createElement('div');
-        var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${finallyDate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${json[i].pages}${json[i].dess}`)
+        var text = document.createTextNode(`${fullwidth(json[i].id.toString())}札記：${tify(json[i].pages)}${tify(json[i].dess)}`)
+        homeworkList.appendChild(text);
+        document.getElementById('write').appendChild(homeworkList);
+    }else {
+        var homeworkList = document.createElement('div');
+        var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${finallyDate}${json[i].sendjob}${fullwidth(json[i].sendlist)}${json[i].sendbook}${tify(json[i].pages)}${tify(json[i].dess)}`)
         homeworkList.appendChild(text);
         homework.appendChild(homeworkList);
     }

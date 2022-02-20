@@ -26,6 +26,7 @@
     "buffer-from": "^1.1.2",
     "camel-case": "^4.1.2",
     "caniuse-lite": "^1.0.30001301",
+    "chinese-conv": "^1.0.1",
     "chrome-trace-event": "^1.0.3",
     "clean-css": "^5.2.2",
     "clone-deep": "^4.0.1",

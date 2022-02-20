@@ -47,7 +47,8 @@ a{
 .root {
     background-color: #E89668;
     width: 500px;
-    padding: 20px;
+    min-height: 50%;
+    padding: 1%;
 }
 
 .subject{
@@ -55,20 +56,19 @@ a{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 3%;
 
 }
 
 .subject div{
-    height: 30px;
-    width: 50px;
+    padding: 1%;
     background-color: black;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans TC', sans-serif;
-    margin: 5px;
+    margin: 0.4%;
     user-select: none;
 }
 
@@ -77,20 +77,19 @@ a{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
 .job div{
-    height: 30px;
-    width: 50px;
+    width: 3rem;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans TC', sans-serif;
-    margin: 5px;
     user-select: none;
+    margin: 0.5%;
 }
 
 .book{
@@ -98,19 +97,19 @@ a{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 0.5rem;
 }
 
 .book div{
-    height: 30px;
-    width: 50px;
+    padding-left: 1%;
+    padding-right: 1%;
     background-color: grey;
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Noto Sans TC', sans-serif;
-    margin: 5px;
+    margin: 0.5%;
     user-select: none;
 }
 
@@ -140,7 +139,7 @@ a{
     height: 30px;
     outline: 0;
     border: 1px solid black;
-    margin: 15px;
+    margin: 0.5rem;
     font-family: 'Noto Sans TC', sans-serif;
     background-color: #fff3d3;
 }
@@ -165,7 +164,7 @@ a{
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    margin: 20px;
+    margin: 2%;
     user-select: none;
 }
 
@@ -176,7 +175,6 @@ a{
 footer{
     position: absolute;
     bottom: 0;
-    height: 50px;
     width: 100%;
     background-color: #5c7a7a;
     display: flex;

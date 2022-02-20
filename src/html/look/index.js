@@ -1,12 +1,13 @@
 import "./index.css"// get css
 import "../../js/alert.js"// get alert js
 import {addDate, delItem, innerCheckno, innerCheckok} from "./public.js"
-import fullwidth from 'fullwidth';
+import fullwidth from "fullwidth";
 import moment from "moment";
+import {tify} from 'chinese-conv';
 let storage = localStorage
 // ------------------------------------------------------------------------------
-const host = "http://192.168.43.161/paula-class/server/log.php";
-const delhost = "http://192.168.43.161/paula-class/server/del.php";
+const host = "http://192.168.43.161/class-room/server/log.php";
+const delhost = "http://192.168.43.161/class-room/server/del.php";
 // ------------------------------------------------------------------------------
 const xhttp = new XMLHttpRequest();
 
@@ -114,9 +115,9 @@ loadItem.then(() => {
                             var homeworkList = document.createElement('div');
 
                             if(storage.auth){
-                                var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${fullwidth(json[i].sendlist)}${json[i].pages}${json[i].dess}`)
+                                var text = document.createTextNode(`${fullwidth(json[i].id.toString())} ${fullwidth(json[i].sendlist)}${tify(json[i].pages)}${tify(json[i].dess)}`)
                             }else{
-                                var text = document.createTextNode(`${fullwidth(json[i].sendlist)}${json[i].pages}${json[i].dess}`)
+                                var text = document.createTextNode(`${fullwidth(json[i].sendlist)}${tify(json[i].pages)}${tify(json[i].dess)}`)
                             }
                             
                             homeworkList.appendChild(text);
@@ -140,6 +141,7 @@ loadItem.then(() => {
     function clearRecord() {
         gradeRecord.innerText = ''
         homework.innerText = ''
+        document.getElementById('write').innerText = ''
     }
 
     function getItemListener(id) {

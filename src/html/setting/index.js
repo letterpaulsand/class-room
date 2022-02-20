@@ -1,8 +1,8 @@
 import "./index.css"
 import "../../js/alert.js"
 // -------------------------------------------------------------------------
-const hostpassword = "http://192.168.43.161/paula-class/server/password.php";
-const hostseepassword = "http://192.168.43.161/paula-class/server/seepassword.php";
+const hostpassword = "http://192.168.43.161/class-room/server/password.php";
+const hostseepassword = "http://192.168.43.161/class-room/server/seepassword.php";
 // -------------------------------------------------------------------------
 var xhttp = new XMLHttpRequest();
 const login = document.getElementById('login');
@@ -43,7 +43,7 @@ function changePassword(changeValue) {
             console.log(json);
             if (json == 'ok') {
                 storage.auth = auth;
-                location.href = '../index';
+                location.href = '../';
             } else {
                 alert('Something wrong!');
             }
@@ -59,7 +59,7 @@ function signout(){
             let json = xhttp.responseText;
             if (json == 'ok') {
                 alert('sign out!');
-                location.href = '../index';
+                location.href = '../';
             } else {
                 alert('Something wrong!');
             }
@@ -93,7 +93,7 @@ submit.addEventListener('click', () => {
             checking(loginValue);
             setTimeout(()=>{
                 if (statusCode == true) {
-                    location.href = '../index'
+                    location.href = '../'
                 } else {
                     alert('Something Wrong! (Time out) or (password wrong)')
                 }
